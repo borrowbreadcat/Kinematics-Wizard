@@ -1,0 +1,132 @@
+
+Kinematics Wizard
+
+int main ()
+{
+	introductionText();
+	requestKnownVariables();
+	solveUnknownVariables();
+	printValues();
+	adjustValues();
+	return 0;
+}
+
+
+step one: introduce the program
+step two: ask the user to define values for knowns variables and denote which are unnknown
+	a. for each variable, ask the user if they know the value or if it is unknown
+	b. ask for the value of each known.
+step thr: calculate unknowns
+	a. automatically determine whether there is enough information to calculate other variables
+		-there are five variables.  Each kinematics equation uses 3 known values to solve a 4th unknown.
+		-all variables known: no math necessary. Why are you here?
+		-1 unknown, 4 known: 4 possible ways to solve the one unknown
+		-2 unknown, 3 known: only one equation will work to solve the first unknown.
+		-3 unknown, 2 known: not enough information to solve anything
+		-4 unknown, 1 known: not enough info
+		-5 unknown, 0 known: what are you even talking about? 
+	b. use the proper kinematics equations to fill in other variables
+step fou: list all the variables and their values
+	a. cout the list
+	b. highlight the variables that were previously unknown and now solved
+step fiv: adjustments
+	a. allow user to change any of the variables, and calculate new values accordingly
+	b. 
+
+Quoted from the internet:
+"
+The BIG 4
+The kinematic equations are a set of four equations that can be utilized to predict unknown information about an object's motion if other information is known. The equations can be utilized for any motion that can be described as being either a constant velocity motion (an acceleration of 0 m/s/s) or a constant acceleration motion. They can never be used over any time period during which the acceleration is changing. Each of the kinematic equations include four variables. If the values of three of the four variables are known, then the value of the fourth variable can be calculated. In this manner, the kinematic equations provide a useful means of predicting information about an object's motion if other information is known. For example, if the acceleration value and the initial and final velocity values of a skidding car is known, then the displacement of the car and the time can be predicted using the kinematic equations. Lesson 6 of this unit will focus upon the use of the kinematic equations to predict the numerical values of unknown quantities for an object's motion.
+
+The four kinematic equations that describe an object's motion are:
+(see downloaded picture)
+
+There are a variety of symbols used in the above equations. Each symbol has its own specific meaning. The symbol d stands for the displacement of the object. The symbol t stands for the time for which the object moved. The symbol a stands for the acceleration of the object. And the symbol v stands for the velocity of the object; a subscript of i after the v (as in vi) indicates that the velocity value is the initial velocity value and a subscript of f (as in vf) indicates that the velocity value is the final velocity value.
+
+Each of these four equations appropriately describes the mathematical relationship between the parameters of an object's motion. As such, they can be used to predict unknown information about an object's motion if other information is known.
+
+KINEMATICS PROBLEM SOLVING STEPS:
+Construct an informative diagram of the physical situation.
+Identify and list the given information in variable form.
+Identify and list the unknown information in variable form.
+Identify and list the equation that will be used to determine unknown information from known information.
+Substitute known values into the equation and use appropriate algebraic steps to solve for the unknown information.
+Check your answer to insure that it is reasonable and mathematically correct.
+
+"
+
+test values:
+t = 1	1
+vi = 2	0
+a = 2	1
+vf = 4	1
+d = 3	.5
+
+BIG FOUR #1: d vi t a ; non vf
+
+d = vi * t + (1/2) * a * t^2
+
+	vi = (d/t) - ((a*t)/2) 		GOOD
+	a  = 2( ( d/t )- vi ) / t	GOOD
+	t  = sqrt( (2 * d) / a ) 	IF vi IS ZERO, GOOD.
+
+	t  = reason this is hard: it becomes a quadratic equation if all other variables are non-zero. see next.
+
+	t  = ( (-vi +or- sqrt(vi^2 + 2ad) ) / a) GOOD if you use plus, not minus.  I think.
+
+
+BIG FOUR #2: vf vi a d ; non t 
+
+vf^2 = vi^2 + 2 * a * d
+
+	vf = sqrt(vi^2 + 2ad)		GOOD
+	vi = sqrt(vf^2 - 2ad)		GOOD
+	d  = (vf^2 - vi^2) / 2a		GOOD
+	a  = (vf^2 - vi^2) / 2d		GOOD
+
+
+BIG FOUR #3: vf vi a t ; non d
+
+vf = vi + a * t				GOOD
+
+	vi = vf - at			GOOD
+	a  = (vf - vi) / t		GOOD
+	t  = (vf - vi) / a		GOOD
+
+
+BIG FOUR #4: d vf vi t ; non a
+
+d = ( (vf + vi) / 2 ) * t		GOOD
+
+	t  = (2d) / (vf + vi)		GOOD
+	vi = (2d / t) - vf		GOOD
+	vf = (2d / t) - vi		GOOD
+
+strange observation: all equations include vi.
+
+
+3 WAYS TO SOLVE FOR t
+t  = ( (-vi +or- sqrt(vi^2 + 2ad) ) / a) GOOD if you use plus, not minus.  I think.
+t  = (vf - vi) / a
+t  = (2d) / (vf + vi)
+
+4 WAYS TO SOLVE FOR v1
+vi = (d/t) - ((a*t)/2)
+vi = sqrt(vf^2 - 2ad)
+vi = (2d / t) - vf
+vi = vf - at
+
+3 WAYS TO SOLVE FOR v2
+vf = sqrt(vi^2 + 2ad)
+vf = vi + a * t
+vf = (2d / t) - vi
+
+3 WAYS TO SOLVE FOR a
+a  = 2( ( d/t )- vi ) / t
+a  = (vf^2 - vi^2) / 2d
+a  = (vf - vi) / t
+
+3 WAYS TO SOLVE FOR d
+d = vi * t + (1/2) * a * t^2
+d  = (vf^2 - vi^2) / 2a
+d = ( (vf + vi) / 2 ) * t
