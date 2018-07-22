@@ -31,6 +31,7 @@ void introductionText()
 	cout << "\tThis is a practice coding project for me while I learn to code C++.\n";
 	cout << "\tThis program will easily calculate the values of an object's Newtonian motion properties.\n\n";
 	cout << "\t\tVERSION HISTORY\n";
+	cout << "\t\tver 1.1 2018-07-12: changed pow() usage for proper syntax `pow(base,power)`\n";
 	cout << "\t\tver 1.0 2018-07-12: suffers from floating point arithmetic rounding error. works otherwise.\n";
 	cout << "\t\tver 0.5 2018-07-12: squashing bugs. bug with solving for d remains.\n";
 	cout << "\t\tver 0.4 2018-07-10: core programming. runs start to end. buggy. \n";
@@ -198,7 +199,7 @@ void solve_t()
 	
 	else if (!v2Known)
 	{	
-		t =  (sqrt((pow(2.0, v1)) + (2 * a * d))) - v1;	//tricky
+		t =  (sqrt((pow(v1, 2.0)) + (2 * a * d))) - v1;	//tricky
 		tKnown = true;
 	}
 	
@@ -220,7 +221,7 @@ void solve_v1()
 {
 	if (!tKnown)
 	{	
-		v1 = sqrt((pow(2.0, v2)) - (2 * a * d)); 
+		v1 = sqrt((pow(v2,2.0)) - (2 * a * d)); 
 		v1Known = true;
 	}
 
@@ -247,7 +248,7 @@ void solve_v2()
 {
 	if (!tKnown)
 	{
-		v2 = sqrt((pow(2.0, v1)) + (2 * a * d));
+		v2 = sqrt((pow(v1, 2.0)) + (2 * a * d));
 		v2Known = true;
 	}
 
@@ -271,7 +272,7 @@ void solve_a()
 {
 	if (!tKnown)
 	{	
-		a = ((pow(2.0, v2)) - (pow(2.0, v1))) / (2 * d);
+		a = ((pow(v2,2.0)) - (pow(v1,2.0))) / (2 * d);
 		aKnown = true;
 	}
 	
@@ -295,7 +296,7 @@ void solve_d()
 {
 	if (!tKnown)
 	{	
-		d = (pow(2.0, v2) - pow(2.0, v1)) / (2 * a);
+		d = (pow(v2,2.0) - pow(v1,2.0)) / (2 * a);
 		dKnown = true;
 	}
 
@@ -304,7 +305,7 @@ void solve_d()
 
 	else if (!v2Known)
 	{	
-		d = (v1 * t) + (0.5 * a * pow(2.0, t));
+		d = (v1 * t) + (0.5 * a * pow(t,2.0));
 		dKnown = true;
 	}
 
